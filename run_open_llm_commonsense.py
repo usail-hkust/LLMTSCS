@@ -13,17 +13,17 @@ import uvicorn
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("-memo", type=str, default='LLMTLCSCommonsenseNoCalculation')
-    parser.add_argument("-model", type=str, default="LLMTLCSCommonsenseNoCalculation")
-    parser.add_argument("-llm_model", type=str, default="llama_2_70b_chat_hf")
-    parser.add_argument("-proj_name", type=str, default="chatgpt-TSCS")
-    parser.add_argument("-eightphase", action="store_true", default=False)
-    parser.add_argument("-multi_process", action="store_true", default=True)
-    parser.add_argument("-workers", type=int, default=1)
-    parser.add_argument("-llm_api_thread_num", type=int, default=1)
-    parser.add_argument("-with_external_api", type=bool, default=False)
-    parser.add_argument("-dataset", type=str, default="hangzhou")
-    parser.add_argument("-traffic_file", type=str, default="anon_4_4_hangzhou_real.json")
+    parser.add_argument("--memo", type=str, default='LLMTLCSCommonsenseNoCalculation')
+    parser.add_argument("--model", type=str, default="LLMTLCSCommonsenseNoCalculation")
+    parser.add_argument("--llm_model", type=str, default="llama_2_70b_chat_hf")
+    parser.add_argument("--proj_name", type=str, default="chatgpt-TSCS")
+    parser.add_argument("--eightphase", action="store_true", default=False)
+    parser.add_argument("--multi_process", action="store_true", default=True)
+    parser.add_argument("--workers", type=int, default=1)
+    parser.add_argument("--llm_api_thread_num", type=int, default=1)
+    parser.add_argument("--with_external_api", type=bool, default=False)
+    parser.add_argument("--dataset", type=str, default="hangzhou")
+    parser.add_argument("--traffic_file", type=str, default="anon_4_4_hangzhou_real.json")
 
     return parser.parse_args()
 

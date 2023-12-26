@@ -12,14 +12,14 @@ from utils import error
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("-memo", type=str, default="Fixedtime")
-    parser.add_argument("-model", type=str, default="Fixedtime")
-    parser.add_argument("-eightphase", action="store_true", default=False)
-    parser.add_argument("-proj_name", type=str, default="chatgpt-TSCS")
-    parser.add_argument("-multi_process", action="store_true", default=True)
-    parser.add_argument("-workers", type=int, default=1)
-    parser.add_argument("-dataset", type=str, default="jinan")
-    parser.add_argument("-traffic_file", type=str, default="anon_3_4_jinan_real.json")
+    parser.add_argument("--memo", type=str, default="Fixedtime")
+    parser.add_argument("--model", type=str, default="Fixedtime")
+    parser.add_argument("--eightphase", action="store_true", default=False)
+    parser.add_argument("--proj_name", type=str, default="chatgpt-TSCS")
+    parser.add_argument("--multi_process", action="store_true", default=True)
+    parser.add_argument("--workers", type=int, default=1)
+    parser.add_argument("--dataset", type=str, default="jinan")
+    parser.add_argument("--traffic_file", type=str, default="anon_3_4_jinan_real.json")
 
     return parser.parse_args()
 

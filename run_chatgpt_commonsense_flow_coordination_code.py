@@ -12,15 +12,15 @@ from utils import error
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("-memo", type=str, default='ChatGPTTLCSCommonsenseFlowCoordinationCode')
-    parser.add_argument("-model", type=str, default="ChatGPTTLCSCommonsenseFlowCoordinationCode")
-    parser.add_argument("-proj_name", type=str, default="chatgpt-TSCS")
-    parser.add_argument("-eightphase", action="store_true", default=False)
-    parser.add_argument("-multi_process", action="store_true", default=True)
-    parser.add_argument("-workers", type=int, default=1)
-    parser.add_argument("-gpt_version", type=str, default="gpt-4")
-    parser.add_argument("-dataset", type=str, default="hangzhou")
-    parser.add_argument("-traffic_file", type=str, default="anon_4_4_hangzhou_synthetic_4000_10min.json")
+    parser.add_argument("--memo", type=str, default='ChatGPTTLCSCommonsenseFlowCoordinationCode')
+    parser.add_argument("--model", type=str, default="ChatGPTTLCSCommonsenseFlowCoordinationCode")
+    parser.add_argument("--proj_name", type=str, default="chatgpt-TSCS")
+    parser.add_argument("--eightphase", action="store_true", default=False)
+    parser.add_argument("--multi_process", action="store_true", default=True)
+    parser.add_argument("--workers", type=int, default=1)
+    parser.add_argument("--gpt_version", type=str, default="gpt-4")
+    parser.add_argument("--dataset", type=str, default="hangzhou")
+    parser.add_argument("--traffic_file", type=str, default="anon_4_4_hangzhou_synthetic_4000_10min.json")
 
     return parser.parse_args()
 

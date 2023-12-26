@@ -8,18 +8,18 @@ import os
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("-memo", type=str, default='PressLight')
-    parser.add_argument("-mod", type=str, default="EfficientPressLight")  # EPressLight
-    parser.add_argument("-model", type=str, default="PressLight")
-    parser.add_argument("-proj_name", type=str, default="chatgpt-TSCS")
-    parser.add_argument("-eightphase", action="store_true", default=False)
-    parser.add_argument("-gen", type=int, default=1)
-    parser.add_argument("-multi_process", action="store_true", default=True)
-    parser.add_argument("-workers", type=int, default=1)
-    parser.add_argument("-dataset", type=str, default="jinan")
-    parser.add_argument("-traffic_file", type=str, default="anon_3_4_jinan_real.json")
-    parser.add_argument("-duration", type=int, default=30)
-    parser.add_argument("-num_rounds", type=int, default=100)
+    parser.add_argument("--memo", type=str, default='PressLight')
+    parser.add_argument("--mod", type=str, default="EfficientPressLight")  # EPressLight
+    parser.add_argument("--model", type=str, default="PressLight")
+    parser.add_argument("--proj_name", type=str, default="chatgpt-TSCS")
+    parser.add_argument("--eightphase", action="store_true", default=False)
+    parser.add_argument("--gen", type=int, default=1)
+    parser.add_argument("--multi_process", action="store_true", default=True)
+    parser.add_argument("--workers", type=int, default=1)
+    parser.add_argument("--dataset", type=str, default="jinan")
+    parser.add_argument("--traffic_file", type=str, default="anon_3_4_jinan_real.json")
+    parser.add_argument("--duration", type=int, default=30)
+    parser.add_argument("--num_rounds", type=int, default=100)
     return parser.parse_args()
 
 
@@ -42,13 +42,13 @@ def main(in_args=None):
         count = 3600
         road_net = "16_3"
         traffic_file_list = ["anon_16_3_newyork_real.json"]
-        num_rounds = in_args.num_rounds
+        num_rounds = 80
         template = "NewYork"
     elif in_args.dataset == 'newyork_28x7':
         count = 3600
         road_net = "28_7"
         traffic_file_list = ["anon_28_7_newyork_real_double.json", "anon_28_7_newyork_real_triple.json"]
-        num_rounds = in_args.num_rounds
+        num_rounds = 80
         template = "NewYork"
 
     # flow_file error

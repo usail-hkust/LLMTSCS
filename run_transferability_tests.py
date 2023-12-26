@@ -10,16 +10,16 @@ import wandb
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("-memo", type=str, default='AdvancedColight')
-    parser.add_argument("-mod", type=str, default="AdvancedColight")
-    parser.add_argument("-model", type=str, default="AdvancedColight")
-    parser.add_argument("-proj_name", type=str, default="chatgpt-TSCS")
-    parser.add_argument("-eightphase", action="store_true", default=False)
-    parser.add_argument("-multi_process", action="store_true", default=True)
-    parser.add_argument("-workers", type=int, default=1)
-    parser.add_argument("-dataset", type=str, default="hangzhou")
-    parser.add_argument("-traffic_file", type=str, default="anon_4_4_hangzhou_synthetic_4000_10min.json")
-    parser.add_argument("-traffic_file_source", type=str, default="anon_4_4_hangzhou_real.json")
+    parser.add_argument("--memo", type=str, default='AdvancedColight')
+    parser.add_argument("--mod", type=str, default="AdvancedColight")
+    parser.add_argument("--model", type=str, default="AdvancedColight")
+    parser.add_argument("--proj_name", type=str, default="chatgpt-TSCS")
+    parser.add_argument("--eightphase", action="store_true", default=False)
+    parser.add_argument("--multi_process", action="store_true", default=True)
+    parser.add_argument("--workers", type=int, default=1)
+    parser.add_argument("--dataset", type=str, default="hangzhou")
+    parser.add_argument("--traffic_file", type=str, default="anon_4_4_hangzhou_synthetic_4000_10min.json")
+    parser.add_argument("--traffic_file_source", type=str, default="anon_4_4_hangzhou_real.json")
 
     return parser.parse_args()
 

@@ -25,7 +25,7 @@ Parameters are well-prepared, and you can run the code directly.
 
 - For axample, to run `Advanced-MPLight`:
 ```shell
-python run_advanced_mplight.py -dataset jinan -traffic_file anon_4_4_hangzhou_real.json
+python run_advanced_mplight.py --dataset jinan --traffic_file anon_4_4_hangzhou_real.json
 ```
 - To run OpenAI LLM agent, you need to set your key in `./models/chatgpt.py`:
 
@@ -40,16 +40,16 @@ Then, run the OpenAI LLM traffic agent:
 
 
 ```shell
-python run_chatgpt_commonsense.py -dataset jinan -traffic_file anon_4_4_hangzhou_real.json -gpt_version gpt-4
+python run_chatgpt_commonsense.py --dataset jinan --traffic_file anon_4_4_hangzhou_real.json --gpt_version gpt-4
 ```
 - To run open LLMs, you can either run an API backend:
 ```shell
-python open_llm_api.py -workers 2
+python open_llm_api.py --workers 2
 ```
 Then, run the open LLM traffic agent:
 
 ```shell
-python run_open_llm_commonsense.py -dataset jinan -traffic_file anon_4_4_hangzhou_real.json -llm_model llama_2_13b_chat_hf -llm_api_thread_num 2 -with_external_api false
+python run_open_llm_commonsense.py --dataset jinan --traffic_file anon_4_4_hangzhou_real.json --llm_model llama_2_13b_chat_hf --llm_api_thread_num 2 -with_external_api false
 ```
 **Note: You should set the number of workers of the open llm api backend and the traffic agent the same!!!**
 
@@ -66,7 +66,7 @@ ex_headers = {
 Then, run the open LLM traffic agent:
 
 ```shell
-python run_open_llm_commonsense.py -dataset jinan -traffic_file anon_4_4_hangzhou_real.json -llm_model llama_2_13b_chat_hf -llm_api_thread_num 2 -with_external_api true
+python run_open_llm_commonsense.py --dataset jinan --traffic_file anon_4_4_hangzhou_real.json --llm_model llama_2_13b_chat_hf --llm_api_thread_num 2 --with_external_api true
 ```
 
 ## 4 Baselines

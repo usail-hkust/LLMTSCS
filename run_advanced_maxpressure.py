@@ -8,14 +8,14 @@ import argparse
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("-memo", type=str, default='AdvancedMaxPressure')
-    parser.add_argument("-model", type=str, default="AdvancedMaxPressure")
-    parser.add_argument("-proj_name", type=str, default="chatgpt-TSCS")
-    parser.add_argument("-eightphase", action="store_true", default=False)
-    parser.add_argument("-multi_process", action="store_true", default=True)
-    parser.add_argument("-workers", type=int, default=1)
-    parser.add_argument("-dataset", type=str, default="template")
-    parser.add_argument("-traffic_file", type=str, default="flow_main_stream.json")
+    parser.add_argument("--memo", type=str, default='AdvancedMaxPressure')
+    parser.add_argument("--model", type=str, default="AdvancedMaxPressure")
+    parser.add_argument("--proj_name", type=str, default="chatgpt-TSCS")
+    parser.add_argument("--eightphase", action="store_true", default=False)
+    parser.add_argument("--multi_process", action="store_true", default=True)
+    parser.add_argument("--workers", type=int, default=1)
+    parser.add_argument("--dataset", type=str, default="template")
+    parser.add_argument("--traffic_file", type=str, default="flow_main_stream.json")
 
     return parser.parse_args()
 
