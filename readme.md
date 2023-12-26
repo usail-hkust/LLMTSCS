@@ -1,5 +1,27 @@
 # Large Language Models as Traffic Signal Control Agents: Capacity and Opportunity
 
+<p align="left">
+
+![Testing Status](https://img.shields.io/badge/docs-in_progress-green)
+![Testing Status](https://img.shields.io/badge/pypi_package-in_progress-green)
+![Testing Status](https://img.shields.io/badge/license-MIT-blue)
+![Testing Status](https://img.shields.io/badge/python->=3.9-red)
+
+</p>
+
+
+<p align="left">
+  
+| **[1 Introduction](#introduction)** 
+| **[2 Requirements](#requirements)**
+| **[3 Usage](#usage)**
+| **[4 Baselines](#baseline)**
+| **[5 Code structure](#code-structure)** 
+| **[6 Datasets](#datasets)**|
+
+
+</p>
+
 ## 1 Introduction
 
 Official code for article "Large Language Models as Traffic Signal Control Agents: Capacity and Opportunity".
