@@ -29,7 +29,7 @@ python run_advanced_mplight.py --dataset jinan --traffic_file anon_4_4_hangzhou_
 ```
 - To run OpenAI LLM agent, you need to set your key in `./models/chatgpt.py`:
 
-```
+```python
 headers = {
     "Content-Type": "application/json",
     "Authorization": "YOUR_KEY_HERE"
@@ -58,7 +58,7 @@ python run_open_llm_commonsense.py --dataset jinan --traffic_file anon_4_4_hangz
 
 Or, you can also run with Perplexity API by setting your key in `./models/open_sourced_llm_models.py`:
 
-```
+```python
 ex_headers = {
     "accept": "application/json",
     "content-type": "application/json",
