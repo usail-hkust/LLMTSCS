@@ -80,8 +80,8 @@ python run_open_llm_commonsense.py --dataset jinan --traffic_file anon_4_4_hangz
     - PressLight, MPLight, CoLight, AttendLight, EfficientMPLight, EfficientPressLight, EfficientColight
 - **Adv-DNN-RL**:
     - AdvancedMaxPressure, AdvancedMPLight, AdvancedColight
-* LLMs:
-  * `gpt-3.5-turbo-0613`, `gpt-4-0613`, `llama-2-13b-chat-hf`, `llama-2-70b-chat-hf`
+- LLMs:
+  - `gpt-3.5-turbo-0613`, `gpt-4-0613`, `llama-2-13b-chat-hf`, `llama-2-70b-chat-hf`
 
 ## 5 Code structure
 - `models`: contains all the models used in our article.
