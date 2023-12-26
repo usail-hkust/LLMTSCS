@@ -8,8 +8,9 @@ Traffic signal control is crucial for optimizing the efficiency of road network 
 
 The code structure is based on [Efficient_XLight](https://github.com/LiangZhang1996/Efficient_XLight.git).
 
-![截屏2023-12-26 16.18.12](./media/Architecture.png)
+![Demo](./media/Architecture.png)
 
+### Watch Our Demo Video Here:
 [![Watch the video](https://img.youtube.com/vi/iCN192kGfP8/maxresdefault.jpg)](https://youtu.be/iCN192kGfP8)
 
 ## 2 Requirements
