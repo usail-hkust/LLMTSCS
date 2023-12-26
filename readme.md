@@ -22,6 +22,7 @@
 
 </p>
 
+<a id="introduction"></a>
 ## 1 Introduction
 
 Official code for article "Large Language Models as Traffic Signal Control Agents: Capacity and Opportunity".
@@ -35,12 +36,14 @@ The code structure is based on [Efficient_XLight](https://github.com/LiangZhang1
 ### Watch Our Demo Video Here:
 https://github.com/usail-hkust/LLMTSCS/assets/62106026/1ff2206d-9d27-4bab-929b-4c948e6b4d86
 
+<a id="requirements"></a>
 ## 2 Requirements
 
 `python=3.9`,`tensorflow=2.8`, `cityflow`, `pandas=1.5.0`, `numpy=1.26.2`, `wandb`,  `transformers=4.37.0`, `accelerate=0.25.0`, `fastapi`, `uvicorn`
 
 [`cityflow`](https://github.com/cityflow-project/CityFlow.git) needs a linux environment, and we run the code on Ubuntu.
 
+<a id="usage"></a>
 ## 3 Usage
 
 Parameters are well-prepared, and you can run the code directly.
@@ -94,6 +97,7 @@ Then, run the open LLM traffic agent:
 python run_open_llm_commonsense.py --dataset jinan --traffic_file anon_4_4_hangzhou_real.json --llm_model llama_2_13b_chat_hf --llm_api_thread_num 2 --with_external_api true
 ```
 
+<a id="baselines"></a>
 ## 4 Baselines
 
 - **Heuristic Methods**:
@@ -105,6 +109,7 @@ python run_open_llm_commonsense.py --dataset jinan --traffic_file anon_4_4_hangz
 - LLMs:
   - `gpt-3.5-turbo-0613`, `gpt-4-0613`, `llama-2-13b-chat-hf`, `llama-2-70b-chat-hf`
 
+<a id="code-structure"></a>
 ## 5 Code structure
 - `models`: contains all the models used in our article.
 - `utils`: contains all the methods to simulate and train the models.
@@ -113,6 +118,7 @@ python run_open_llm_commonsense.py --dataset jinan --traffic_file anon_4_4_hangz
 - `{LLM_MODEL}_logs`: contains dialog log files of a LLM.
 - `prompts`: contains base prompts of ChatGPT agents.
 
+<a id="datasets"></a>
 ## 6 Datasets
 
 <table>
