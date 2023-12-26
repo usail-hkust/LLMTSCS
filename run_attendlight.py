@@ -20,6 +20,7 @@ def parse_args():
     parser.add_argument("-dataset", type=str, default="jinan")
     parser.add_argument("-traffic_file", type=str, default="anon_3_4_jinan_real.json")
     parser.add_argument("-duration", type=int, default=30)
+    parser.add_argument("-num_rounds", type=int, default=100)
     return parser.parse_args()
 
 
@@ -30,25 +31,25 @@ def main(in_args=None):
         count = 3600
         road_net = "3_4"
         traffic_file_list = ["anon_3_4_jinan_real.json", "anon_3_4_jinan_real_2000.json", "anon_3_4_jinan_real_2500.json"]
-        num_rounds = 200
+        num_rounds = in_args.num_rounds
         template = "Jinan"
     elif in_args.dataset == 'hangzhou':
         count = 3600
         road_net = "4_4"
         traffic_file_list = ["anon_4_4_hangzhou_real.json", "anon_4_4_hangzhou_real_5816.json"]
-        num_rounds = 200
+        num_rounds = in_args.num_rounds
         template = "Hangzhou"
     elif in_args.dataset == 'newyork_16x3':
         count = 3600
         road_net = "16_3"
         traffic_file_list = ["anon_16_3_newyork_real.json"]
-        num_rounds = 80
+        num_rounds = in_args.num_rounds
         template = "NewYork"
     elif in_args.dataset == 'newyork_28x7':
         count = 3600
         road_net = "28_7"
         traffic_file_list = ["anon_28_7_newyork_real_double.json", "anon_28_7_newyork_real_triple.json"]
-        num_rounds = 80
+        num_rounds = in_args.num_rounds
         template = "NewYork"
 
     # flow_file error
