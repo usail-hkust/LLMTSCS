@@ -1,5 +1,28 @@
 # Large Language Models as Traffic Signal Control Agents: Capacity and Opportunity
 
+<p align="left">
+
+![Testing Status](https://img.shields.io/badge/docs-in_progress-green)
+![Testing Status](https://img.shields.io/badge/pypi_package-in_progress-green)
+![Testing Status](https://img.shields.io/badge/license-MIT-blue)
+![Testing Status](https://img.shields.io/badge/python->=3.9-red)
+
+</p>
+
+
+<p align="left">
+  
+| **[1 Introduction](#introduction)** 
+| **[2 Requirements](#requirements)**
+| **[3 Usage](#usage)**
+| **[4 Baselines](#baselines)**
+| **[5 Code structure](#code-structure)** 
+| **[6 Datasets](#datasets)**|
+
+
+</p>
+
+<a id="introduction"></a>
 ## 1 Introduction
 
 Official code for article "Large Language Models as Traffic Signal Control Agents: Capacity and Opportunity".
@@ -13,12 +36,14 @@ The code structure is based on [Efficient_XLight](https://github.com/LiangZhang1
 ### Watch Our Demo Video Here:
 https://github.com/usail-hkust/LLMTSCS/assets/62106026/1ff2206d-9d27-4bab-929b-4c948e6b4d86
 
+<a id="requirements"></a>
 ## 2 Requirements
 
 `python=3.9`,`tensorflow=2.8`, `cityflow`, `pandas=1.5.0`, `numpy=1.26.2`, `wandb`,  `transformers=4.37.0`, `accelerate=0.25.0`, `fastapi`, `uvicorn`
 
 [`cityflow`](https://github.com/cityflow-project/CityFlow.git) needs a linux environment, and we run the code on Ubuntu.
 
+<a id="usage"></a>
 ## 3 Usage
 
 Parameters are well-prepared, and you can run the code directly.
@@ -29,7 +54,7 @@ python run_advanced_mplight.py --dataset jinan --traffic_file anon_4_4_hangzhou_
 ```
 - To run OpenAI LLM agent, you need to set your key in `./models/chatgpt.py`:
 
-```
+```python
 headers = {
     "Content-Type": "application/json",
     "Authorization": "YOUR_KEY_HERE"
@@ -58,7 +83,7 @@ python run_open_llm_commonsense.py --dataset jinan --traffic_file anon_4_4_hangz
 
 Or, you can also run with Perplexity API by setting your key in `./models/open_sourced_llm_models.py`:
 
-```
+```python
 ex_headers = {
     "accept": "application/json",
     "content-type": "application/json",
@@ -72,6 +97,7 @@ Then, run the open LLM traffic agent:
 python run_open_llm_commonsense.py --dataset jinan --traffic_file anon_4_4_hangzhou_real.json --llm_model llama_2_13b_chat_hf --llm_api_thread_num 2 --with_external_api true
 ```
 
+<a id="baselines"></a>
 ## 4 Baselines
 
 - **Heuristic Methods**:
@@ -83,6 +109,7 @@ python run_open_llm_commonsense.py --dataset jinan --traffic_file anon_4_4_hangz
 - LLMs:
   - `gpt-3.5-turbo-0613`, `gpt-4-0613`, `llama-2-13b-chat-hf`, `llama-2-70b-chat-hf`
 
+<a id="code-structure"></a>
 ## 5 Code structure
 - `models`: contains all the models used in our article.
 - `utils`: contains all the methods to simulate and train the models.
@@ -91,6 +118,7 @@ python run_open_llm_commonsense.py --dataset jinan --traffic_file anon_4_4_hangz
 - `{LLM_MODEL}_logs`: contains dialog log files of a LLM.
 - `prompts`: contains base prompts of ChatGPT agents.
 
+<a id="datasets"></a>
 ## 6 Datasets
 
 <table>
