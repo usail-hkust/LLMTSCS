@@ -11,7 +11,7 @@ The code structure is based on [Efficient_XLight](https://github.com/LiangZhang1
 ![Demo](./media/Architecture.png)
 
 ### Watch Our Demo Video Here:
-[![Watch the video](https://img.youtube.com/vi/iCN192kGfP8/maxresdefault.jpg)](https://youtu.be/iCN192kGfP8)
+https://github.com/usail-hkust/LLMTSCS/assets/62106026/1ff2206d-9d27-4bab-929b-4c948e6b4d86
 
 ## 2 Requirements
 
