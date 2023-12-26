@@ -10,7 +10,10 @@ The code structure is based on [Efficient_XLight](https://github.com/LiangZhang1
 
 ![截屏2023-12-26 16.18.12](./media/Architecture.png)
 
+[![Watch the video](./media/demo.png)](https://youtu.be/iCN192kGfP8)
+
 ## 2 Requirements
+
 `python=3.9`,`tensorflow=2.8`, `cityflow`, `pandas=1.5.0`, `numpy=1.26.2`, `wandb`,  `transformers=4.37.0`, `accelerate=0.25.0`, `fastapi`, `uvicorn`
 
 [`cityflow`](https://github.com/cityflow-project/CityFlow.git) needs a linux environment, and we run the code on Ubuntu.
