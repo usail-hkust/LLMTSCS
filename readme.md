@@ -51,7 +51,10 @@ Then, run the open LLM traffic agent:
 ```shell
 python run_open_llm_commonsense.py --dataset jinan --traffic_file anon_4_4_hangzhou_real.json --llm_model llama_2_13b_chat_hf --llm_api_thread_num 2 --with_external_api false
 ```
-**Note: You should set the number of workers of the open llm api backend and the traffic agent the same!!!**
+**Note: **
+
+- **You first need to download your LLM and put it under the `./llm_models` directory**.
+- **You should set the number of workers of the open LLM api backend and the traffic agent the same.**
 
 Or, you can also run with Perplexity API by setting your key in `./models/open_sourced_llm_models.py`:
 
