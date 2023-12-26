@@ -10,7 +10,7 @@ The code structure is based on [Efficient_XLight](https://github.com/LiangZhang1
 
 ![截屏2023-12-26 16.18.12](./media/Architecture.png)
 
-[![Watch the video](./media/demo.png)](https://youtu.be/iCN192kGfP8)
+[![Watch the video](https://img.youtube.com/vi/iCN192kGfP8/maxresdefault.jpg)](https://youtu.be/iCN192kGfP8)
 
 ## 2 Requirements
 
