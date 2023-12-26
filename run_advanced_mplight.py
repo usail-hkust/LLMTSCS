@@ -50,18 +50,6 @@ def main(in_args=None):
         traffic_file_list = ["anon_28_7_newyork_real_double.json", "anon_28_7_newyork_real_triple.json"]
         num_rounds = in_args.num_rounds
         template = "NewYork"
-    elif in_args.dataset == 'template_1x1':
-        count = 3600
-        road_net = "1_1"
-        traffic_file_list = ["flow_main_stream.json", "flow_3_legs.json"]
-        num_rounds = in_args.num_rounds
-        template = "template"
-    elif in_args.dataset == 'template_3x3':
-        count = 3600
-        road_net = "3_3"
-        traffic_file_list = ["flow_3_3.json"]
-        num_rounds = in_args.num_rounds
-        template = "template"
 
     # flow_file error
     try:
