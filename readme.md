@@ -18,7 +18,8 @@
 | **[3 Usage](#usage)**
 | **[4 Baselines](#baselines)**
 | **[5 Code structure](#code-structure)** 
-| **[6 Datasets](#datasets)**|
+| **[6 Datasets](#datasets)**
+| **[7 Citation](#citation)**|
 
 
 </p>
@@ -157,3 +158,15 @@ python run_open_llm_commonsense.py --dataset jinan --traffic_file anon_4_4_hangz
       <td> anon_28_7_newyork_real_triple.json </td>
     </tr>
 </table>
+
+<a id="citation"></a>
+## Citation
+
+```
+@inproceedings{Lai2023LargeLM,
+  title={Large Language Models as Traffic Signal Control Agents: Capacity and Opportunity},
+  author={Siqi Lai and Zhao Xu and Weijia Zhang and Hao Liu and Hui Xiong},
+  year={2023},
+  url={https://api.semanticscholar.org/CorpusID:266551220}
+}
+```
