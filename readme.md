@@ -26,7 +26,7 @@
 <a id="introduction"></a>
 ## 1 Introduction
 
-Official code for article "Large Language Models as Traffic Signal Control Agents: Capacity and Opportunity".
+Official code for article "[Large Language Models as Traffic Signal Control Agents: Capacity and Opportunity](https://arxiv.org/abs/2312.16044)".
 
 Traffic signal control is crucial for optimizing the efficiency of road network by regulating traffic light phases. Existing research predominantly focuses on heuristic or reinforcement learning (RL)-based methods, which often lack transferability across diverse traffic scenarios and suffer from poor interpretability. This paper introduces a novel approach, LLMLight, utilizing large language models (LLMs) for traffic signal control tasks. By leveraging LLMs' impressive generalization and zero-shot reasoning capabilities, LLMLight executes a human-like decision-making process for efficient traffic management. Specifically, the framework begins by composing task descriptions, current traffic conditions, and prior knowledge into a prompt. Subsequently, we utilize LLM's chain-of-thought (CoT) reasoning ability to identify the next traffic signal phase, ensuring optimal efficiency in the road network. LLMLight achieves state-of-the-art (SOTA) or competitive results across five real-world traffic datasets. Notably, LLMLight showcases remarkable generalization, interpretability, and zero-shot reasoning abilities, even without any training for transportation management tasks.
 
