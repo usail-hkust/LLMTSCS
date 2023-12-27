@@ -1,6 +1,6 @@
 # Large Language Models as Traffic Signal Control Agents: Capacity and Opportunity
 
-<p align="left">
+<p align="center">
 
 ![Testing Status](https://img.shields.io/badge/docs-in_progress-green)
 ![Testing Status](https://img.shields.io/badge/pypi_package-in_progress-green)
@@ -10,7 +10,7 @@
 </p>
 
 
-<p align="left">
+<p align="center">
   
 | **[1 Introduction](#introduction)** 
 | **[2 Requirements](#requirements)**
