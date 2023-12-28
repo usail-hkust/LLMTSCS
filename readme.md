@@ -6,7 +6,6 @@
 ![Testing Status](https://img.shields.io/badge/pypi_package-in_progress-green)
 ![Testing Status](https://img.shields.io/badge/license-MIT-blue)
 ![Stars](https://img.shields.io/github/stars/usail-hkust/LLMTSCS)
-[![Page Views Count](https://badges.toozhao.com/badges/01HJQAVPBQ0Y4212PNQF48B2Y7/green.svg)](https://badges.toozhao.com/stats/01HJQAVPBQ0Y4212PNQF48B2Y7 "Get your own page views count badge on badges.toozhao.com")
 
 </p>
 
