@@ -6,6 +6,7 @@
 ![Testing Status](https://img.shields.io/badge/pypi_package-in_progress-green)
 ![Testing Status](https://img.shields.io/badge/license-MIT-blue)
 ![Stars](https://img.shields.io/github/stars/usail-hkust/LLMTSCS)
+![Visits Badge](https://badges.pufler.dev/visits/usail-hkust/LLMTSCS)
 
 </p>
 
