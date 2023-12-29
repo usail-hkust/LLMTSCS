@@ -50,7 +50,7 @@ https://github.com/usail-hkust/LLMTSCS/assets/62106026/1ff2206d-9d27-4bab-929b-4
 
 Parameters are well-prepared, and you can run the code directly.
 
-- For axample, to run `Advanced-MPLight`:
+- For example, to run `Advanced-MPLight`:
 ```shell
 python run_advanced_mplight.py --dataset jinan --traffic_file anon_4_4_hangzhou_real.json
 ```
