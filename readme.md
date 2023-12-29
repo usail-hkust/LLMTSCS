@@ -43,14 +43,14 @@ https://github.com/usail-hkust/LLMTSCS/assets/62106026/1ff2206d-9d27-4bab-929b-4
 
 `python=3.9`,`tensorflow=2.8`, `cityflow`, `pandas=1.5.0`, `numpy=1.26.2`, `wandb`,  `transformers=4.37.0`, `accelerate=0.25.0`, `fastapi`, `uvicorn`
 
-[`cityflow`](https://github.com/cityflow-project/CityFlow.git) needs a linux environment, and we run the code on Ubuntu.
+[`cityflow`](https://github.com/cityflow-project/CityFlow.git) needs a Linux environment, and we run the code on Ubuntu.
 
 <a id="usage"></a>
 ## 3 Usage
 
 Parameters are well-prepared, and you can run the code directly.
 
-- For axample, to run `Advanced-MPLight`:
+- For example, to run `Advanced-MPLight`:
 ```shell
 python run_advanced_mplight.py --dataset jinan --traffic_file anon_4_4_hangzhou_real.json
 ```
