@@ -163,10 +163,10 @@ python run_open_llm_commonsense.py --dataset jinan --traffic_file anon_4_4_hangz
 ## 7 Citation
 
 ```
-@inproceedings{Lai2023LargeLM,
+@article{lai2023large,
   title={Large Language Models as Traffic Signal Control Agents: Capacity and Opportunity},
-  author={Siqi Lai and Zhao Xu and Weijia Zhang and Hao Liu and Hui Xiong},
-  year={2023},
-  url={https://api.semanticscholar.org/CorpusID:266551220}
+  author={Lai, Siqi and Xu, Zhao and Zhang, Weijia and Liu, Hao and Xiong, Hui},
+  journal={arXiv preprint arXiv:2312.16044},
+  year={2023}
 }
 ```
