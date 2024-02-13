@@ -35,7 +35,8 @@ The code structure is based on [Efficient_XLight](https://github.com/LiangZhang1
 ![workflow](./media/Workflow.png)
 
 ### Watch Our Demo Video Here:
-https://github.com/usail-hkust/LLMTSCS/assets/62106026/1ff2206d-9d27-4bab-929b-4c948e6b4d86
+https://github.com/usail-hkust/LLMTSCS/assets/62106026/90567f61-5d58-4dac-8c8e-836a421f3ff9
+
 
 <a id="requirements"></a>
 ## 2 Requirements
