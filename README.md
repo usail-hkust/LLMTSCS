@@ -32,7 +32,7 @@ Traffic Signal Control (TSC) is a crucial component in urban traffic management,
 
 The code structure is based on [Efficient_XLight](https://github.com/LiangZhang1996/Efficient_XLight.git).
 
-![workflow](./media/workflow.png)
+![workflow](./media/Workflow.png)
 
 ### Watch Our Demo Video Here:
 https://github.com/usail-hkust/LLMTSCS/assets/62106026/1ff2206d-9d27-4bab-929b-4c948e6b4d86
