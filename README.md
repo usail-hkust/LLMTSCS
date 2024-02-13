@@ -1,6 +1,7 @@
 # LLMLight: Large Language Models as Traffic Signal Control Agents
 
 <p align="center">
+
 ![Testing Status](https://img.shields.io/badge/docs-in_progress-green)
 ![Testing Status](https://img.shields.io/badge/pypi_package-in_progress-green)
 ![Testing Status](https://img.shields.io/badge/license-MIT-blue)
@@ -8,7 +9,6 @@
 ![Visits Badge](https://badges.pufler.dev/visits/usail-hkust/LLMTSCS)
 
 </p>
-
 
 <p align="center">
 | **[1 Introduction](#introduction)** 
@@ -19,6 +19,7 @@
 | **[6 Code structure](#code-structure)** 
 | **[7 Datasets](#datasets)**
 | **[8 Citation](#citation)**|
+
 
 </p>
 
