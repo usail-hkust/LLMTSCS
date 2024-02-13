@@ -174,9 +174,12 @@ Similarly, we merge the adapter with the base model by running `merge_lora.py`.
 ## 8 Citation
 
 ```
-@inproceedings{Lai2023LargeLM,
-  title={LLMLight: Large Language Models as Traffic Signal Control Agents},
-  author={Siqi Lai and Zhao Xu and Weijia Zhang and Hao Liu and Hui Xiong},
-  year={2023}
+@misc{lai2024llmlight,
+      title={LLMLight: Large Language Models as Traffic Signal Control Agents}, 
+      author={Siqi Lai and Zhao Xu and Weijia Zhang and Hao Liu and Hui Xiong},
+      year={2024},
+      eprint={2312.16044},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI}
 }
 ```
