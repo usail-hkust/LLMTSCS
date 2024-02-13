@@ -11,6 +11,7 @@
 </p>
 
 <p align="center">
+
 | **[1 Introduction](#introduction)** 
 | **[2 Requirements](#requirements)**
 | **[3 Usage](#usage)**
@@ -20,11 +21,9 @@
 | **[7 Datasets](#datasets)**
 | **[8 Citation](#citation)**|
 
-
 </p>
 
 <a id="introduction"></a>
-
 ## 1 Introduction
 
 Official code for article "[LLMLight: Large Language Models as Traffic Signal Control Agents](https://arxiv.org/abs/2312.16044)".
