@@ -1,5 +1,6 @@
 .idea/
 .vscode/
+.DS_Store/
 model/
 models/__pycache__/
 GPT_logs/
