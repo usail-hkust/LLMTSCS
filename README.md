@@ -12,16 +12,14 @@
 
 
 <p align="center">
-
 | **[1 Introduction](#introduction)** 
 | **[2 Requirements](#requirements)**
 | **[3 Usage](#usage)**
 | **[4 Baselines](#baselines)**
-| **[5 Code structure](#code-structure)** 
+| **[5 LightGPT Training](#lightgpt_training)**
+| **[5 Code Structure](#code-structure)** 
 | **[6 Datasets](#datasets)**
 | **[7 Citation](#citation)**|
-
-
 </p>
 
 <a id="introduction"></a>
@@ -93,8 +91,8 @@ python run_open_LLM.py --llm_model LLM_MODEL_NAME(ONLY FOR LOG) --llm_path LLM_P
 - **LLMLight+LightGPT**:
     - The model trained on Jinan 1 is available at https://huggingface.co/USAIL-HKUSTGZ/LLMLight-LightGPT
 
+<a id="lightgpt_training"></a>
 
-<a id="code-structure"></a>
 ## 5 LightGPT Training
 
 ### Step 1: Imitation Fine-tuning
@@ -123,7 +121,9 @@ python ./finetune/merge_lora.py --adapter_model_name="OUTPUT_DIR_{traffic_file}"
 
 Similarly, we merge the adapter with the base model by running `merge_lora.py`.
 
-## 5 Code structure
+<a id="code-structure"></a>
+
+## 6 Code structure
 
 - `models`: contains all the models used in our article.
 - `utils`: contains all the methods to simulate and train the models.
@@ -134,7 +134,7 @@ Similarly, we merge the adapter with the base model by running `merge_lora.py`.
 - `finetune`: contains codes for LightGPT training.
 
 <a id="datasets"></a>
-## 6 Datasets
+## 7 Datasets
 
 <table>
     <tr>
@@ -171,7 +171,7 @@ Similarly, we merge the adapter with the base model by running `merge_lora.py`.
 
 <a id="citation"></a>
 
-## 7 Citation
+## 8 Citation
 
 ```
 @inproceedings{Lai2023LargeLM,
