@@ -20,7 +20,7 @@
 | **[6 Code structure](#code-structure)** 
 | **[7 Datasets](#datasets)**
 | **[8 Citation](#citation)**
-| **[Website](https://llmlight-page.vercel.app/)**|
+| **[Website](https://llmlight-page.vercel.app/)** |
 
 </p>
 
