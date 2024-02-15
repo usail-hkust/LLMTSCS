@@ -56,7 +56,7 @@ Parameters are well-prepared, and you can run the code directly.
 ```shell
 python run_advanced_mplight.py --dataset hangzhou 
                                --traffic_file anon_4_4_hangzhou_real.json 
-                              --proj_name TSCS
+                               --proj_name TSCS
 ```
 - To run OpenAI LLM agent, you need to set your key in `./models/chatgpt.py`:
 
@@ -126,7 +126,9 @@ We merge the adapter with the base model by running `merge_lora.py`.
 - You first need to train `Advanced-CoLight` by running:
 
 ```shell
-python run_advanced_colight.py
+python run_advanced_colight.py --dataset hangzhou 
+                               --traffic_file anon_4_4_hangzhou_real.json 
+                               --proj_name TSCS
 ```
 
 The RL model weights will be automatically saved in a checkpoint folder in `./model`. You need to copy it and put it under the `./model_weights/AdvancedColight/{traffic_file}/"` folder.
@@ -147,8 +149,10 @@ The fine-tuning data will be ready at `./data/cgpr/cgpr_{traffic_file}.json`.
 ```shell
 python ./finetune/run_policy_refinement.py --llm_model MODEL_NAME_ONLY_FOR_LOG 
                                            --llm_path MODEL_PATH 
-                                           --llm_output_dir OUTPUT_DIR dataset hangzhou 
+                                           --llm_output_dir OUTPUT_DIR 
+                                           --dataset hangzhou 
                                            --traffic_file anon_4_4_hangzhou_real.json
+                                           --proj_name LightGPTFineTuning
                                            
 python ./finetune/merge_lora.py --adapter_model_name="OUTPUT_DIR_{traffic_file}" 
                                 --base_model_name="MODEL_PATH" 
