@@ -54,7 +54,9 @@ Parameters are well-prepared, and you can run the code directly.
 
 - For axample, to run `Advanced-MPLight`:
 ```shell
-python run_advanced_mplight.py --dataset hangzhou --traffic_file anon_4_4_hangzhou_real.json --proj_name TSCS
+python run_advanced_mplight.py --dataset hangzhou 
+                               --traffic_file anon_4_4_hangzhou_real.json 
+                              --proj_name TSCS
 ```
 - To run OpenAI LLM agent, you need to set your key in `./models/chatgpt.py`:
 
@@ -69,14 +71,22 @@ Then, run the OpenAI LLM traffic agent:
 
 
 ```shell
-python run_chatgpt.py --prompt Commonsense --dataset hangzhou --traffic_file anon_4_4_hangzhou_real.json --gpt_version gpt-4 --proj_name TSCS
+python run_chatgpt.py --prompt Commonsense 
+                      --dataset hangzhou 
+                      --traffic_file anon_4_4_hangzhou_real.json 
+                      --gpt_version gpt-4 
+                      --proj_name TSCS
 ```
 You can either choose `Commonsense` or `Wait Time Forecast` as the `prompt` argument.
 
 - To run open-sourced LLMs:
 
 ```shell
-python run_open_LLM.py --llm_model LLM_MODEL_NAME(ONLY FOR LOG) --llm_path LLM_PATH --dataset hangzhou --traffic_file anon_4_4_hangzhou_real.json --proj_name TSCS
+python run_open_LLM.py --llm_model LLM_MODEL_NAME_ONLY_FOR_LOG
+                       --llm_path LLM_PATH 
+                       --dataset hangzhou 
+                       --traffic_file anon_4_4_hangzhou_real.json 
+                       --proj_name TSCS
 ```
 <a id="baselines"></a>
 
@@ -100,25 +110,50 @@ python run_open_LLM.py --llm_model LLM_MODEL_NAME(ONLY FOR LOG) --llm_path LLM_P
 ### Step 1: Imitation Fine-tuning
 
 ```shell
-python ./finetune/run_imitation_finetune.py --base_model MODEL_PATH --data_path DATA_PATH --output_dir OUTPUT_DIR
-python ./finetune/merge_lora.py --adapter_model_name="OUTPUT_DIR" --base_model_name="MODEL_PATH" --output_name="MERGED_MODEL_PATH"
+python ./finetune/run_imitation_finetune.py --base_model MODEL_PATH 
+                                            --data_path DATA_PATH 
+                                            --output_dir OUTPUT_DIR
+                                            
+python ./finetune/merge_lora.py --adapter_model_name="OUTPUT_DIR" 
+                                --base_model_name="MODEL_PATH" 
+                                --output_name="MERGED_MODEL_PATH"
 ```
 
 We merge the adapter with the base model by running `merge_lora.py`.
 
 ### Step 2: Policy Refinement Data Collection
 
+- You first need to train `Advanced-CoLight` by running:
+
 ```shell
-python ./finetune/run_policy_refinement_data_collection.py --llm_model MODEL_NAME(ONLY FOR LOG) --llm_path MODEL_PATH --dataset hangzhou --traffic_file anon_4_4_hangzhou_real.json
+python run_advanced_colight.py
 ```
 
-The fine-tuning data will be ready at `./data/cgpr/cgpr_{TRAFFIC_FILE}.json`
+The RL model weights will be automatically saved in a checkpoint folder in `./model`. You need to copy it and put it under the `./model_weights/AdvancedColight/{traffic_file}/"` folder.
+
+- Then, specify the paths and run:
+
+```shell
+python ./finetune/run_policy_refinement_data_collection.py --llm_model MODEL_NAME_ONLY_FOR_LOG
+                                                           --llm_path MODEL_PATH
+                                                           --critic_path CRITIC_PATH  # the path of the RL model
+                                                           --dataset hangzhou 
+                                                           --traffic_file anon_4_4_hangzhou_real.json
+```
+
+The fine-tuning data will be ready at `./data/cgpr/cgpr_{traffic_file}.json`.
 
 ### Step 3: Critic-guided Policy Refinement
 
 ```shell
-python ./finetune/run_policy_refinement.py --llm_model MODEL_NAME(ONLY FOR LOG) --llm_path MODEL_PATH ----llm_output_dir OUTPUT_DIR dataset hangzhou --traffic_file anon_4_4_hangzhou_real.json
-python ./finetune/merge_lora.py --adapter_model_name="OUTPUT_DIR_{traffic_file}" --base_model_name="MODEL_PATH" --output_name="MERGED_MODEL_PATH"
+python ./finetune/run_policy_refinement.py --llm_model MODEL_NAME_ONLY_FOR_LOG 
+                                           --llm_path MODEL_PATH 
+                                           --llm_output_dir OUTPUT_DIR dataset hangzhou 
+                                           --traffic_file anon_4_4_hangzhou_real.json
+                                           
+python ./finetune/merge_lora.py --adapter_model_name="OUTPUT_DIR_{traffic_file}" 
+                                --base_model_name="MODEL_PATH" 
+                                --output_name="MERGED_MODEL_PATH"
 ```
 
 Similarly, we merge the adapter with the base model by running `merge_lora.py`.
@@ -143,31 +178,31 @@ Similarly, we merge the adapter with the base model by running `merge_lora.py`.
         <td> <b> Road networks </b> </td> <td> <b> Intersections </b> </td> <td> <b> Road network arg </b> </td> <td> <b> Traffic files </b> </td>
     </tr>
     <tr> <!-- Jinan -->
-        <th rowspan="4"> Jinan </th> <th rowspan="4"> 3 X 4 </th> <th rowspan="4"> jinan </th>  <td> anon_3_4_jinan_real.json </td> 
+        <th rowspan="4"> Jinan </th> <th rowspan="4"> 3 X 4 </th> <th rowspan="4"> jinan </th>  <td> anon_3_4_jinan_real </td> 
     </tr>
   	<tr>
-      <td> anon_3_4_jinan_real_2000.json </td>
+      <td> anon_3_4_jinan_real_2000 </td>
   	</tr>
   	<tr>
-      <td> anon_3_4_jinan_real_2500.json </td>
+      <td> anon_3_4_jinan_real_2500 </td>
     </tr>
     <tr>
-      <td> anon_3_4_jinan_synthetic_24000_60min.json </td>
+      <td> anon_3_4_jinan_synthetic_24000_60min </td>
     </tr>
   	<tr> <!-- Hangzhou -->
-        <th rowspan="3"> Hangzhou </th> <th rowspan="3"> 4 X 4 </th> <th rowspan="3"> hangzhou </th> <td> anon_4_4_hangzhou_real.json </td>
+        <th rowspan="3"> Hangzhou </th> <th rowspan="3"> 4 X 4 </th> <th rowspan="3"> hangzhou </th> <td> anon_4_4_hangzhou_real </td>
     </tr>
   	<tr>
-      <td> anon_4_4_hangzhou_real_5816.json </td>
+      <td> anon_4_4_hangzhou_real_5816 </td>
     </tr>
     <tr>
-      <td> anon_4_4_hangzhou_synthetic_32000_60min.json </td>
+      <td> anon_4_4_hangzhou_synthetic_32000_60min </td>
     </tr>
   <tr> <!-- Newyork -->
-        <th rowspan="2"> New York </th> <th rowspan="2"> 28 X 7 </th> <th rowspan="2"> newyork_28x7 </th> <td> anon_28_7_newyork_real_double.json </td>
+        <th rowspan="2"> New York </th> <th rowspan="2"> 28 X 7 </th> <th rowspan="2"> newyork_28x7 </th> <td> anon_28_7_newyork_real_double </td>
     </tr>
   	<tr>
-      <td> anon_28_7_newyork_real_triple.json </td>
+      <td> anon_28_7_newyork_real_triple </td>
     </tr>
 </table>
 
