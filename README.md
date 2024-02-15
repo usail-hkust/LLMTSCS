@@ -131,12 +131,11 @@ python run_advanced_colight.py
 
 The RL model weights will be automatically saved in a checkpoint folder in `./model`. You need to copy it and put it under the `./model_weights/AdvancedColight/{traffic_file}/"` folder.
 
-- Then, specify the paths and run:
+- Then, collect the data by running:
 
 ```shell
 python ./finetune/run_policy_refinement_data_collection.py --llm_model MODEL_NAME_ONLY_FOR_LOG
                                                            --llm_path MODEL_PATH
-                                                           --critic_path CRITIC_PATH  # the path of the RL model
                                                            --dataset hangzhou 
                                                            --traffic_file anon_4_4_hangzhou_real.json
 ```
