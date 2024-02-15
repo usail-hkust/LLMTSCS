@@ -58,7 +58,7 @@ python run_advanced_mplight.py --dataset hangzhou
                                --traffic_file anon_4_4_hangzhou_real.json 
                                --proj_name TSCS
 ```
-- To run OpenAI LLM agent, you need to set your key in `./models/chatgpt.py`:
+- To run GPT-3.5/GPT-4 with LLMLight, you need to set your key in `./models/chatgpt.py`:
 
 ```python
 headers = {
@@ -67,8 +67,7 @@ headers = {
 }
 ```
 
-Then, run the OpenAI LLM traffic agent:
-
+Then, run LLMLight by:
 
 ```shell
 python run_chatgpt.py --prompt Commonsense 
@@ -79,7 +78,7 @@ python run_chatgpt.py --prompt Commonsense
 ```
 You can either choose `Commonsense` or `Wait Time Forecast` as the `prompt` argument.
 
-- To run open-sourced LLMs:
+- To run open-sourced LLMs with LLMLight:
 
 ```shell
 python run_open_LLM.py --llm_model LLM_MODEL_NAME_ONLY_FOR_LOG
