@@ -73,7 +73,7 @@ python run_chatgpt.py --prompt Commonsense --dataset hangzhou --traffic_file ano
 ```
 You can either choose `Commonsense` or `Wait Time Forecast` as the `prompt` argument.
 
-- To run open LLMs:
+- To run open-sourced LLMs:
 
 ```shell
 python run_open_LLM.py --llm_model LLM_MODEL_NAME(ONLY FOR LOG) --llm_path LLM_PATH --dataset hangzhou --traffic_file anon_4_4_hangzhou_real.json --proj_name TSCS
