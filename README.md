@@ -1,5 +1,7 @@
 # LLMLight: Large Language Models as Traffic Signal Control Agents
 
+![llmlight](https://github.com/usail-hkust/LLMTSCS/assets/62106026/3fd45ae1-f231-4928-84b5-a0d9d548742b)
+
 <p align="center">
 
 ![Testing Status](https://img.shields.io/badge/docs-in_progress-green)
