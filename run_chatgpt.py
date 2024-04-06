@@ -12,7 +12,6 @@ from utils import error
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--memo", type=str, default='ChatGPTCommonsense')
     parser.add_argument("--prompt", type=str, default='Commonsense')
     parser.add_argument("--proj_name", type=str, default="chatgpt-TSCS")
     parser.add_argument("--eightphase", action="store_true", default=False)
@@ -120,6 +119,9 @@ def main(in_args):
                                                time.strftime('%m_%d_%H_%M_%S', time.localtime(time.time()))),
         "PATH_TO_DATA": os.path.join("data", template, str(road_net))
     }
+
+    if not os.path.exists("./GPT_logs"):
+        os.makedirs("./GPT_logs")
 
     if in_args.multi_process:
         process_list.append(Process(target=oneline_wrapper,
