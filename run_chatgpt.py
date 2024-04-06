@@ -12,6 +12,7 @@ from utils import error
 
 def parse_args():
     parser = argparse.ArgumentParser()
+    parser.add_argument("--memo", type=str, default='ChatGPTCommonsense')
     parser.add_argument("--prompt", type=str, default='Commonsense')
     parser.add_argument("--proj_name", type=str, default="chatgpt-TSCS")
     parser.add_argument("--eightphase", action="store_true", default=False)
