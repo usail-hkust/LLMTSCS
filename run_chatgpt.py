@@ -44,11 +44,12 @@ def main(in_args):
         road_net = "28_7"
         traffic_file_list = ["anon_28_7_newyork_real_double.json", "anon_28_7_newyork_real_triple.json"]
         template = "NewYork"
-    in_args.model = in_args.memo
+    
     if in_args.prompt == "Commonsense":
         in_args.memo = "ChatGPTTLCSCommonsense"
     elif in_args.prompt == "Wait Time Forecast":
         in_args.memo = "ChatGPTTLCWaitTimeForecast"
+    in_args.model = in_args.memo
 
     # flow_file error
     try:
