@@ -17,6 +17,7 @@ def parse_args():
     parser.add_argument("--memo", type=str, default='LLMTLCSRun')
     parser.add_argument("--llm_model", type=str, default="llama_cgpr_13b_jinan_1")
     parser.add_argument("--llm_path", type=str, default="./ft_models/merged/llama_cgpr_13b_jinan_1")
+    parser.add_argument("--num_rounds", type=int, default=1)
     parser.add_argument("--new_max_tokens", type=int, default=1024)
     parser.add_argument("--proj_name", type=str, default="LLM-TSCS-extreme")
     parser.add_argument("--eightphase", action="store_true", default=False)
