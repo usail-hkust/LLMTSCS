@@ -245,6 +245,7 @@ class ChatGPTTLCS_Commonsense(object):
                 }
                 response = requests.post(url, headers=headers, data=json.dumps(data)).json()
                 analysis = response['choices'][0]['message']['content']
+                print(analysis)
                 retry_counter += 1
                 signal_answer_pattern = r'<signal>(.*?)</signal>'
                 signal_text = re.findall(signal_answer_pattern, analysis)[-1]
