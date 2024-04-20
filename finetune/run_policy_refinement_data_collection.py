@@ -1,11 +1,8 @@
-"""
-Run the Fixed-Time model
-On JiNan and HangZhou real data
-"""
-from utils.utils import oneline_wrapper
+import sys
+sys.path.append('../')
+
 import os
 import time
-from multiprocessing import Process
 import argparse
 from utils import error
 from utils.llm_aft_trainer import LLM_CGPR_Collector
@@ -85,7 +82,6 @@ def main(in_args):
         "MODEL_NAME": f"{in_args.model}-{dic_agent_conf_extra['LLM_MODEL']}",
         "PROJECT_NAME": "",
         "RUN_COUNTS": count,
-        "NUM_ROUNDS": in_args.num_rounds,
         "NUM_ROW": NUM_ROW,
         "NUM_COL": NUM_COL,
 

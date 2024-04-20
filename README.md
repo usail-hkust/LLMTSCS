@@ -56,8 +56,8 @@ Parameters are well-prepared, and you can run the code directly.
 
 - For axample, to run `Advanced-MPLight`:
 ```shell
-python run_advanced_mplight.py --dataset hangzhou 
-                               --traffic_file anon_4_4_hangzhou_real.json 
+python run_advanced_mplight.py --dataset hangzhou \
+                               --traffic_file anon_4_4_hangzhou_real.json \
                                --proj_name TSCS
 ```
 - To run GPT-3.5/GPT-4 with LLMLight, you need to set your key in `./models/chatgpt.py`:
@@ -72,10 +72,10 @@ headers = {
 Then, run LLMLight by:
 
 ```shell
-python run_chatgpt.py --prompt Commonsense 
-                      --dataset hangzhou 
-                      --traffic_file anon_4_4_hangzhou_real.json 
-                      --gpt_version gpt-4 
+python run_chatgpt.py --prompt Commonsense \
+                      --dataset hangzhou \
+                      --traffic_file anon_4_4_hangzhou_real.json \
+                      --gpt_version gpt-4 \
                       --proj_name TSCS
 ```
 You can either choose `Commonsense` or `Wait Time Forecast` as the `prompt` argument.
@@ -83,10 +83,10 @@ You can either choose `Commonsense` or `Wait Time Forecast` as the `prompt` argu
 - To run open-sourced LLMs with LLMLight:
 
 ```shell
-python run_open_LLM.py --llm_model LLM_MODEL_NAME_ONLY_FOR_LOG
-                       --llm_path LLM_PATH 
-                       --dataset hangzhou 
-                       --traffic_file anon_4_4_hangzhou_real.json 
+python run_open_LLM.py --llm_model LLM_MODEL_NAME_ONLY_FOR_LOG \
+                       --llm_path LLM_PATH \
+                       --dataset hangzhou \
+                       --traffic_file anon_4_4_hangzhou_real.json \
                        --proj_name TSCS
 ```
 <a id="baselines"></a>
@@ -111,12 +111,12 @@ python run_open_LLM.py --llm_model LLM_MODEL_NAME_ONLY_FOR_LOG
 ### Step 1: Imitation Fine-tuning
 
 ```shell
-python ./finetune/run_imitation_finetune.py --base_model MODEL_PATH 
-                                            --data_path DATA_PATH 
+python ./finetune/run_imitation_finetune.py --base_model MODEL_PATH \
+                                            --data_path DATA_PATH \
                                             --output_dir OUTPUT_DIR
                                             
-python ./finetune/merge_lora.py --adapter_model_name="OUTPUT_DIR" 
-                                --base_model_name="MODEL_PATH" 
+python ./finetune/merge_lora.py --adapter_model_name="OUTPUT_DIR" \
+                                --base_model_name="MODEL_PATH" \
                                 --output_name="MERGED_MODEL_PATH"
 ```
 
@@ -127,8 +127,8 @@ We merge the adapter with the base model by running `merge_lora.py`.
 - You first need to train `Advanced-CoLight` by running:
 
 ```shell
-python run_advanced_colight.py --dataset hangzhou 
-                               --traffic_file anon_4_4_hangzhou_real.json 
+python run_advanced_colight.py --dataset hangzhou \
+                               --traffic_file anon_4_4_hangzhou_real.json \
                                --proj_name TSCS
 ```
 
@@ -137,9 +137,9 @@ The RL model weights will be automatically saved in a checkpoint folder in `./mo
 - Then, collect the data by running:
 
 ```shell
-python ./finetune/run_policy_refinement_data_collection.py --llm_model MODEL_NAME_ONLY_FOR_LOG
-                                                           --llm_path MODEL_PATH
-                                                           --dataset hangzhou 
+python ./finetune/run_policy_refinement_data_collection.py --llm_model MODEL_NAME_ONLY_FOR_LOG \
+                                                           --llm_path MODEL_PATH \
+                                                           --dataset hangzhou \
                                                            --traffic_file anon_4_4_hangzhou_real.json
 ```
 
@@ -148,15 +148,15 @@ The fine-tuning data will be ready at `./data/cgpr/cgpr_{traffic_file}.json`.
 ### Step 3: Critic-guided Policy Refinement
 
 ```shell
-python ./finetune/run_policy_refinement.py --llm_model MODEL_NAME_ONLY_FOR_LOG 
-                                           --llm_path MODEL_PATH 
-                                           --llm_output_dir OUTPUT_DIR 
-                                           --dataset hangzhou 
-                                           --traffic_file anon_4_4_hangzhou_real.json
+python ./finetune/run_policy_refinement.py --llm_model MODEL_NAME_ONLY_FOR_LOG \
+                                           --llm_path MODEL_PATH \
+                                           --llm_output_dir OUTPUT_DIR \
+                                           --dataset hangzhou \
+                                           --traffic_file anon_4_4_hangzhou_real.json \
                                            --proj_name LightGPTFineTuning
                                            
-python ./finetune/merge_lora.py --adapter_model_name="OUTPUT_DIR_{traffic_file}" 
-                                --base_model_name="MODEL_PATH" 
+python ./finetune/merge_lora.py --adapter_model_name="OUTPUT_DIR_{traffic_file}" \
+                                --base_model_name="MODEL_PATH" \
                                 --output_name="MERGED_MODEL_PATH"
 ```
 

@@ -1,11 +1,8 @@
-"""
-Run the Fixed-Time model
-On JiNan and HangZhou real data
-"""
-from utils.utils import oneline_wrapper
+import sys
+sys.path.append('../')
+
 import os
 import time
-from multiprocessing import Process
 import argparse
 from utils import error
 from utils.llm_aft_trainer import LLM_CGPR_Trainer as Trainer
@@ -16,7 +13,7 @@ def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("--memo", type=str, default='LLMTLCSFineTuneCGPR')
     parser.add_argument("--llm_model", type=str, default="llama_ift_13b_jinan_1")
-    parser.add_argument("--llm_path", type=str, default="./ft_models/merged/llama_ift_13b_jinan_1")
+    parser.add_argument("--llm_path", type=str, default="../ft_models/merged/llama_ift_13b_jinan_1")
     parser.add_argument("--llm_output_dir", type=str, default="./ft_models/cgpr/llama_cgpr_13b")
     parser.add_argument("--batch_size", type=int, default=4)
     parser.add_argument("--mini_batch_size", type=int, default=1)
@@ -29,8 +26,8 @@ def parse_args():
     parser.add_argument("--eightphase", action="store_true", default=False)
     parser.add_argument("--multi_process", action="store_true", default=True)
     parser.add_argument("--workers", type=int, default=1)
-    parser.add_argument("--dataset", type=str, default="hangzhou")
-    parser.add_argument("--traffic_file", type=str, default="anon_4_4_hangzhou_real_5816.json")
+    parser.add_argument("--dataset", type=str, default="jinan")
+    parser.add_argument("--traffic_file", type=str, default="anon_3_4_jinan_real.json")
 
     return parser.parse_args()
 
