@@ -187,12 +187,8 @@ class RankTrainer(Seq2SeqTrainer):
                 continue
 
             for neg_score in sorted_scores[neg_start:]:
-                if self.args.neg_detach:
-                    tmp += torch.exp((neg_score.detach() - pos_scores) / self.args.temperature)
-                else:
-                    tmp += torch.exp((neg_score - pos_scores) / self.args.temperature)
-                if self.args.boundary:
-                    tmp += torch.exp(2 * positive_lower_boundary - 2 * self.args.beta - pos_scores.item() - neg_score)
+                tmp += torch.exp((neg_score - pos_scores) / self.args.temperature)
+                tmp += torch.exp(2 * positive_lower_boundary - 2 * self.args.beta - pos_scores.item() - neg_score)
 
         if tmp != 0:
             loss = torch.log(1 + tmp)
