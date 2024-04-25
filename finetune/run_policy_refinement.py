@@ -107,9 +107,7 @@ def main(in_args):
 
         "DIC_REWARD_INFO": {
             'queue_length': -0.25
-        },
-
-        "REWARD": in_args.reward
+        }
     }
 
     if in_args.eightphase:
