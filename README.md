@@ -46,7 +46,7 @@ https://github.com/usail-hkust/LLMTSCS/assets/62106026/90567f61-5d58-4dac-8c8e-8
 
 `python>=3.9`,`tensorflow-cpu=2.8.0`, `cityflow`, `pandas=1.5.0`, `numpy=1.26.2`, `wandb`,  `transformers=4.36.2`, `peft=0.7.1`, `accelerate=0.25.0`, `datasets=2.16.1`, `fire`
 
-[`cityflow`](https://github.com/cityflow-project/CityFlow.git) needs a linux environment, and we run the code on Ubuntu.
+[`cityflow`](https://github.com/cityflow-project/CityFlow.git) needs a Linux environment, and we run the code on Ubuntu.
 
 <a id="usage"></a>
 
@@ -54,7 +54,7 @@ https://github.com/usail-hkust/LLMTSCS/assets/62106026/90567f61-5d58-4dac-8c8e-8
 
 Parameters are well-prepared, and you can run the code directly.
 
-- For axample, to run `Advanced-MPLight`:
+- For example, to run `Advanced-MPLight`:
 ```shell
 python run_advanced_mplight.py --dataset hangzhou \
                                --traffic_file anon_4_4_hangzhou_real.json \
@@ -94,11 +94,11 @@ python run_open_LLM.py --llm_model LLM_MODEL_NAME_ONLY_FOR_LOG \
 ## 4 Baselines
 
 - **Heuristic Methods**:
-    - Fixedtime, MaxPressure, EfficientMaxPressure
+    - FixedTime, Maxpressure, EfficientMaxPressure
 - **DNN-RL**:
-    - PressLight, MPLight, CoLight, AttendLight, EfficientMPLight, EfficientPressLight, EfficientColight
+    - PressLight, MPLight, CoLight, AttendLight, EfficientMPLight, EfficientPressLight, Efficient-Colight
 - **Adv-DNN-RL**:
-    - AdvancedMaxPressure, AdvancedMPLight, AdvancedColight
+    - Advanced-MaxPressure, Advanced-MPLight, Advanced-Colight
 - **LLMLight+LLM**:
   - `gpt-3.5-turbo-0613`, `gpt-4-0613`, `llama-2-13b-chat-hf`, `llama-2-70b-chat-hf`
 - **LLMLight+LightGPT**:
