@@ -27,18 +27,22 @@ def main(in_args):
         count = 3600
         road_net = "3_4"
         traffic_file_list = ["anon_3_4_jinan_real.json", "anon_3_4_jinan_real_2000.json",
-                             "anon_3_4_jinan_real_2500.json", "anon_3_4_jinan_synthetic_24000_60min.json"]
+                             "anon_3_4_jinan_real_2500.json", "anon_3_4_jinan_synthetic_24000_60min.json",
+                             "anon_3_4_jinan_synthetic_24h_6000.json"]
         template = "Jinan"
     elif in_args.dataset == 'hangzhou':
         count = 3600
         road_net = "4_4"
-        traffic_file_list = ["anon_4_4_hangzhou_real.json", "anon_4_4_hangzhou_real_5816.json", "anon_4_4_hangzhou_synthetic_32000_60min.json"]
+        traffic_file_list = ["anon_4_4_hangzhou_real.json", "anon_4_4_hangzhou_real_5816.json", "anon_4_4_hangzhou_synthetic_24000_60min.json"]
         template = "Hangzhou"
     elif in_args.dataset == 'newyork_28x7':
         count = 3600
         road_net = "28_7"
         traffic_file_list = ["anon_28_7_newyork_real_double.json", "anon_28_7_newyork_real_triple.json"]
         template = "NewYork"
+
+    if "24h" in in_args.traffic_file:
+        count = 86400
 
     # flow_file error
     try:

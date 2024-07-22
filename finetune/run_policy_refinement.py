@@ -43,7 +43,7 @@ def main(in_args):
     elif in_args.dataset == 'hangzhou':
         count = 3600
         road_net = "4_4"
-        traffic_file_list = ["anon_4_4_hangzhou_real.json", "anon_4_4_hangzhou_real_5816.json", "anon_4_4_hangzhou_synthetic_32000_60min.json"]
+        traffic_file_list = ["anon_4_4_hangzhou_real.json", "anon_4_4_hangzhou_real_5816.json", "anon_4_4_hangzhou_synthetic_24000_60min.json"]
         template = "Hangzhou"
     elif in_args.dataset == 'newyork_16x3':
         count = 3600

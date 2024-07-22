@@ -200,7 +200,7 @@ Similarly, we merge the adapter with the base model by running `merge_lora.py`.
       <td> anon_4_4_hangzhou_real_5816 </td>
     </tr>
     <tr>
-      <td> anon_4_4_hangzhou_synthetic_32000_60min </td>
+      <td> anon_4_4_hangzhou_synthetic_24000_60min </td>
     </tr>
   <tr> <!-- Newyork -->
         <th rowspan="2"> New York </th> <th rowspan="2"> 28 X 7 </th> <th rowspan="2"> newyork_28x7 </th> <td> anon_28_7_newyork_real_double </td>
