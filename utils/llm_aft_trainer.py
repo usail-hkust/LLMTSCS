@@ -1,4 +1,5 @@
-from utils.my_utils import load_json, dump_json, get_state_detail, state2text, getPrompt, action2code, code2action, eight_phase_list, four_phase_list, torch_gc
+from utils.my_utils import dump_json, get_state_detail, state2text, getPrompt, action2code, code2action, eight_phase_list, four_phase_list, torch_gc
+import vllm
 import os
 import time
 import numpy as np
@@ -7,10 +8,8 @@ from utils.cityflow_env import CityFlowEnv
 import utils.config as config
 from utils.aft_rank_loss_utils import *
 from transformers import AutoTokenizer, AutoModelForCausalLM
-from trl import AutoModelForCausalLMWithValueHead, PPOConfig, PPOTrainer, create_reference_model
-from peft import LoraConfig, get_peft_model, PeftModel, prepare_model_for_int8_training
-from torch.optim.lr_scheduler import StepLR
-from datasets import load_dataset, Dataset
+from peft import LoraConfig, get_peft_model
+from datasets import load_dataset
 from tqdm import tqdm
 import torch
 from copy import deepcopy
@@ -755,6 +754,245 @@ class LLM_Inference:
             fail_num = 0
             vehicle_nums = self.get_vehicle_num(current_states)
             critic_actions = []
+            for i, res in enumerate(responses):
+                res = res[len(prompts[i]):]
+                signal_answer_pattern = r'<signal>(.*?)</signal>'
+                signals = re.findall(signal_answer_pattern, res)
+                signal_text = signals[-1] if len(signals) > 0 else "ETWT"
+                action_list.append(action2code(signal_text) if signal_text in four_phase_list else 0)
+                if len(signals) == 0 or signal_text not in four_phase_list:
+                    signal_text = "ETWT"
+                    if vehicle_nums[i] != 0:
+                        self.fail_logs.append({"state": current_states[i], "response": res})
+                        dump_json(self.fail_logs, self.fail_log_file)
+                        fail_num += 1
+
+                state_action_log[i][-1]["response"] = res
+                state_action_log[i][-1]["action"] = eight_phase_list[action_list[i]]
+
+            next_state, _, done, _ = self.env.step(action_list)
+            rewards = self.get_norm_reward(next_state)  # my reward
+
+            current_time = self.env.get_current_time()  # in seconds
+            state = next_state
+
+            # calculate logger results
+            total_reward += sum(rewards)
+            queue_length_inter = []
+            for inter in self.env.list_intersection:
+                queue_length_inter.append(sum(inter.dic_feature['lane_num_waiting_vehicle_in']))
+            queue_length_episode.append(sum(queue_length_inter))
+            print("Fail Num:", fail_num, "Queuing Vehicles:", sum(queue_length_episode))
+
+            # waiting time
+            waiting_times = []
+            for veh in self.env.waiting_vehicle_list:
+                waiting_times.append(self.env.waiting_vehicle_list[veh]['time'])
+            waiting_time_episode.append(np.mean(waiting_times) if len(waiting_times) > 0 else 0.0)
+
+        # wandb logger
+        vehicle_travel_times = {}
+        for inter in self.env.list_intersection:
+            arrive_left_times = inter.dic_vehicle_arrive_leave_time
+            for veh in arrive_left_times:
+                if "shadow" in veh:
+                    continue
+                enter_time = arrive_left_times[veh]["enter_time"]
+                leave_time = arrive_left_times[veh]["leave_time"]
+                if not np.isnan(enter_time):
+                    leave_time = leave_time if not np.isnan(leave_time) else self.dic_traffic_env_conf["RUN_COUNTS"]
+                    if veh not in vehicle_travel_times:
+                        vehicle_travel_times[veh] = [leave_time - enter_time]
+                    else:
+                        vehicle_travel_times[veh].append(leave_time - enter_time)
+
+        total_travel_time = np.mean([sum(vehicle_travel_times[veh]) for veh in vehicle_travel_times])
+
+        results = {
+            "test_reward_over": total_reward,
+            "test_avg_queue_len_over": np.mean(queue_length_episode) if len(queue_length_episode) > 0 else 0,
+            "test_queuing_vehicle_num_over": np.sum(queue_length_episode) if len(queue_length_episode) > 0 else 0,
+            "test_avg_waiting_time_over": np.mean(waiting_time_episode) if len(queue_length_episode) > 0 else 0,
+            "test_avg_travel_time_over": total_travel_time}
+        logger.log(results)
+        print("Test Round:", test_round, results)
+        f_state_action = os.path.join(self.dic_path["PATH_TO_WORK_DIRECTORY"], "state_action.json")
+        dump_json(state_action_log, f_state_action)
+        print("Testing time: ", time.time() - start_time)
+
+        self.env.batch_log_2()
+
+        return results
+
+    def train_test(self):
+        all_config = merge(merge(self.dic_agent_conf, self.dic_path), self.dic_traffic_env_conf)
+        logger = wandb.init(
+            project=self.dic_traffic_env_conf['PROJECT_NAME'],
+            group=f"{self.dic_traffic_env_conf['MODEL_NAME']}-{self.roadnet}-{self.trafficflow}-{len(self.dic_traffic_env_conf['PHASE'])}_Phases",
+            name=f"{self.dic_traffic_env_conf['TRAFFIC_FILE'].replace('.json', '')}",
+            config=all_config,
+        )
+
+        self.test(logger, 0)
+        wandb.finish()
+
+    '''
+    ======================= Class Utils =======================
+    '''
+    def get_vehicle_num(self, states):
+        veh_nums = []
+
+        for i in range(len(states)):
+            vehicle_num = 0
+
+            for lane in states[i]:
+                vehicle_num += states[i][lane]['queue_len']
+                for cell in range(len(states[i][lane]['cells'])):
+                    vehicle_num += states[i][lane]['cells'][cell]
+
+            veh_nums.append(vehicle_num)
+
+        return veh_nums
+
+    def get_norm_reward(self, state):
+        rewards = []
+
+        for i in range(len(state)):
+            vehicle_num = 0
+            queue_length = 0
+
+            intersection = self.env.intersection_dict[self.env.list_intersection[i].inter_name]
+            roads = deepcopy(intersection["roads"])
+            statistic_state, _, _ = get_state_detail(roads, self.env)
+            for lane in statistic_state:
+                queue_length += statistic_state[lane]['queue_len']
+
+                vehicle_num += statistic_state[lane]['queue_len']
+                for cell in range(len(statistic_state[lane]['cells'])):
+                    vehicle_num += statistic_state[lane]['cells'][cell]
+
+            reward = -(queue_length / vehicle_num) if vehicle_num > 0.0 else -0.0
+            rewards.append(reward)
+
+        return rewards
+
+
+class LLM_Inference_VLLM:
+    def __init__(self, dic_agent_conf, dic_traffic_env_conf, dic_path, roadnet, trafficflow):
+        self.dic_agent_conf = dic_agent_conf
+        self.dic_traffic_env_conf = dic_traffic_env_conf
+        self.dic_path = dic_path
+        self.agents = []
+        self.env = None
+        self.roadnet = roadnet
+        self.trafficflow = trafficflow
+        self.models = []
+        self.generation_kwargs = {}
+        self.epoch_num = 0
+        self.tokenizer = None
+        self.llm_model = None
+        self.llm_ref_model = None
+        self.dic_critic_agent_conf = None
+        self.training_args = None
+        self.trainer_built = False
+        self.trainer = None
+        self.device = None
+        self.fail_log_file = f"./fails/{self.dic_agent_conf['LLM_MODEL']}-{self.dic_traffic_env_conf['TRAFFIC_FILE']}-{self.dic_traffic_env_conf['ROADNET_FILE']}.json"
+        self.fail_logs = []
+        self.initialize()
+
+    def initialize_llm(self):
+        device_map = "auto"
+
+        # init LLM
+        llm_path = self.dic_agent_conf["LLM_PATH"]
+        self.llm_model = vllm.LLM(
+            model=llm_path,
+            tokenizer=llm_path,
+            dtype=torch.bfloat16
+        )
+
+        # init tokenizer
+        self.tokenizer = AutoTokenizer.from_pretrained(
+            llm_path,
+            padding_side="left",
+            padding=True
+        )
+        self.tokenizer.pad_token_id = 0
+
+        test_generation_kwargs = {
+            "min_length": -1,
+            "top_k": 50,
+            "top_p": 1.0,
+            "temperature": 0.1,
+            "do_sample": True,
+            "max_new_tokens": self.dic_agent_conf["NEW_MAX_TOKENS"],
+            "pad_token_id": self.tokenizer.pad_token_id,
+            "eos_token_id": self.tokenizer.eos_token_id
+        }
+        self.generation_kwargs = vllm.SamplingParams(**test_generation_kwargs)
+
+    def initialize(self):
+        path_check(self.dic_path)
+        copy_conf_file(self.dic_path, self.dic_agent_conf, self.dic_traffic_env_conf)
+        copy_cityflow_file(self.dic_path, self.dic_traffic_env_conf)
+
+        self.env = CityFlowEnv(
+            path_to_log=self.dic_path["PATH_TO_WORK_DIRECTORY"],
+            path_to_work_directory=self.dic_path["PATH_TO_WORK_DIRECTORY"],
+            dic_traffic_env_conf=self.dic_traffic_env_conf,
+            dic_path=self.dic_path
+        )
+        self.env.reset()
+        self.initialize_llm()
+
+    def test(self, logger, test_round):
+        print("================ Start Test ================")
+        total_run_cnt = self.dic_traffic_env_conf["RUN_COUNTS"]
+        # initialize output streams
+        done = False
+        state = self.env.reset()
+        total_reward = 0.0
+        queue_length_episode = []
+        waiting_time_episode = []
+        print("end reset")
+        current_time = self.env.get_current_time()  # in seconds
+
+        start_time = time.time()
+        state_action_log = [[] for _ in range(len(state))]
+
+        self.llm_model.eval()
+        for step_num in tqdm(range(int(total_run_cnt / self.dic_traffic_env_conf['MIN_ACTION_TIME']))):
+            if done or current_time >= total_run_cnt:
+                break
+            action_list = []
+            current_states = []
+
+            for i in range(len(state)):
+                # log statistic state
+                intersection = self.env.intersection_dict[self.env.list_intersection[i].inter_name]
+                roads = deepcopy(intersection["roads"])
+                statistic_state, statistic_state_incoming, mean_speed = get_state_detail(roads, self.env)
+                state_action_log[i].append({"state": statistic_state, "state_incoming": statistic_state_incoming,
+                                            "approaching_speed": mean_speed})
+                current_states.append(statistic_state)
+
+            prompts = []
+            for s in current_states:
+                prompt = getPrompt(state2text(s))
+                prompt = prompt[0]['content'] + "\n\n### Instruction:\n" + prompt[1]['content'] + "\n\n### Response:\n"
+                prompts.append(prompt)
+
+            responses = []
+            previous_flag = 0
+            for i in range(len(current_states)):
+                if (i + 1) % 16 == 0 or i + 1 >= len(current_states):
+                    responses_meta = self.llm_model.generate(prompts=prompts[previous_flag:i+1], sampling_params=self.generation_kwargs)
+                    responses += [res.outputs[0].text for res in responses_meta]
+                    previous_flag = i + 1
+
+            fail_num = 0
+            vehicle_nums = self.get_vehicle_num(current_states)
             for i, res in enumerate(responses):
                 res = res[len(prompts[i]):]
                 signal_answer_pattern = r'<signal>(.*?)</signal>'

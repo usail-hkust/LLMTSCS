@@ -80,14 +80,22 @@ python run_chatgpt.py --prompt Commonsense \
 ```
 You can either choose `Commonsense` or `Wait Time Forecast` as the `prompt` argument.
 
-- To run open-sourced LLMs with LLMLight:
+- To run with open-sourced LLMs (or LightGPT) and LLMLight:
 
 ```shell
+# with default methods of Transformers
 python run_open_LLM.py --llm_model LLM_MODEL_NAME_ONLY_FOR_LOG \
                        --llm_path LLM_PATH \
                        --dataset hangzhou \
                        --traffic_file anon_4_4_hangzhou_real.json \
                        --proj_name TSCS
+                       
+# or with VLLM (much faster but will cost more GPU memory)
+python run_open_LLM_with_vllm.py --llm_model LLM_MODEL_NAME_ONLY_FOR_LOG \
+                                 --llm_path LLM_PATH \
+                                 --dataset hangzhou \
+                                 --traffic_file anon_4_4_hangzhou_real.json \
+                                 --proj_name TSCS
 ```
 <a id="baselines"></a>
 
