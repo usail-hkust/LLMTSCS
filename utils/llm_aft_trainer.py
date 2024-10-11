@@ -657,6 +657,9 @@ class LLM_Inference:
         self.trainer_built = False
         self.trainer = None
         self.device = None
+
+        if not os.path.exists("./fails"):
+            os.mkdir("./fails")
         self.fail_log_file = f"./fails/{self.dic_agent_conf['LLM_MODEL']}-{self.dic_traffic_env_conf['TRAFFIC_FILE']}-{self.dic_traffic_env_conf['ROADNET_FILE']}.json"
         self.fail_logs = []
         self.initialize()
@@ -897,6 +900,9 @@ class LLM_Inference_VLLM:
         self.trainer_built = False
         self.trainer = None
         self.device = None
+
+        if not os.path.exists("./fails"):
+            os.mkdir("./fails")
         self.fail_log_file = f"./fails/{self.dic_agent_conf['LLM_MODEL']}-{self.dic_traffic_env_conf['TRAFFIC_FILE']}-{self.dic_traffic_env_conf['ROADNET_FILE']}.json"
         self.fail_logs = []
         self.initialize()
