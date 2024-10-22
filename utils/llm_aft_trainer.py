@@ -660,6 +660,8 @@ class LLM_Inference:
 
         if not os.path.exists("./fails"):
             os.mkdir("./fails")
+        if not os.path.exists(f"{self.llm_model}_logs"):
+            os.mkdir(f"{self.llm_model}_logs")
         self.fail_log_file = f"./fails/{self.dic_agent_conf['LLM_MODEL']}-{self.dic_traffic_env_conf['TRAFFIC_FILE']}-{self.dic_traffic_env_conf['ROADNET_FILE']}.json"
         self.fail_logs = []
         self.initialize()
@@ -903,6 +905,8 @@ class LLM_Inference_VLLM:
 
         if not os.path.exists("./fails"):
             os.mkdir("./fails")
+        if not os.path.exists(f"{self.llm_model}_logs"):
+            os.mkdir(f"{self.llm_model}_logs")
         self.fail_log_file = f"./fails/{self.dic_agent_conf['LLM_MODEL']}-{self.dic_traffic_env_conf['TRAFFIC_FILE']}-{self.dic_traffic_env_conf['ROADNET_FILE']}.json"
         self.fail_logs = []
         self.initialize()
