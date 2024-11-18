@@ -115,7 +115,7 @@ python run_open_LLM_with_vllm.py --llm_model LLM_MODEL_NAME_ONLY_FOR_LOG \
 - **LLMLight+LLM**:
   - `gpt-3.5-turbo-0613`, `gpt-4-0613`, `llama-2-13b-chat-hf`, `llama-2-70b-chat-hf`
 - **LLMLight+LightGPT**:
-    - The model trained on Jinan 1 is available at https://huggingface.co/USAIL-HKUSTGZ/LLMLight-LightGPT
+    - The model trained on Jinan 1 is available at https://huggingface.co/collections/usail-hkust/llmlight-lightgpt-673ac5a619cbbe309165b56d
 
 <a id="lightgpt-training"></a>
 
