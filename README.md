@@ -27,6 +27,11 @@
 </p>
 
 <a id="introduction"></a>
+
+## 🎉 News 
+
+- [x] 🚀🔥 [2024.11] 🎯🎯📢📢 Exciting News! We are thrilled to announce that our 🌟LLMLight🌟 has been accepted by KDD'2025! 🎉🎉🎉 Thanks to all the team members 🤗
+
 ## 1 Introduction
 
 Official code for article "[LLMLight: Large Language Models as Traffic Signal Control Agents](https://arxiv.org/abs/2312.16044)".
