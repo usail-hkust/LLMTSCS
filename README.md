@@ -30,7 +30,8 @@
 
 ## 🎉 News 
 
-- [x] 🚀🔥 [2024.11] 🎯🎯📢📢 Exciting News! We are thrilled to announce that our 🌟LLMLight🌟 has been accepted by KDD'2025! 🎉🎉🎉 Thanks to all the team members 🤗
+- [x] 🚀🔥 [2024.11] 🎯🎯📢📢 Exciting News! We are thrilled to announce that our 🌟**LLMLight**🌟 has been accepted by **KDD'2025**! 🎉🎉🎉 Thanks to all the team members 🤗
+- [x] 🚀🔥 [2024.11] 🎯🎯📢📢 Exciting Update! We’re thrilled to announce that our LightGPT family has expanded with **four new members** now available on [HuggingFace](https://huggingface.co/collections/usail-hkust/llmlight-lightgpt-673ac5a619cbbe309165b56d). These models include fine-tuned backbones based on **Qwen2** and **Llama3**. Check them out!
 
 ## 1 Introduction
 
