@@ -9,6 +9,7 @@
 ![Testing Status](https://img.shields.io/badge/license-MIT-blue)
 ![Stars](https://img.shields.io/github/stars/usail-hkust/LLMTSCS)
 ![Visits Badge](https://badges.pufler.dev/visits/usail-hkust/LLMTSCS)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14619360.svg)](https://doi.org/10.5281/zenodo.14619360)
 
 </p>
 
