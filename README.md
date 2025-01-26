@@ -51,7 +51,7 @@ https://github.com/usail-hkust/LLMTSCS/assets/62106026/90567f61-5d58-4dac-8c8e-8
 <a id="requirements"></a>
 ## 2 Requirements
 
-`python>=3.9`,`tensorflow-cpu=2.8.0`, `cityflow`, `pandas=1.5.0`, `numpy=1.26.2`, `wandb`,  `transformers=4.36.2`, `peft=0.7.1`, `accelerate=0.25.0`, `datasets=2.16.1`, `fire`
+`python>=3.9`,`tensorflow-cpu==2.8.0`, `cityflow`, `pandas==1.5.0`, `numpy==1.26.2`, `wandb`,  `transformers==4.45.0`, `peft==0.7.1`, `accelerate==0.27.2`, `datasets==2.16.1`, `fire`, `vllm==0.6.2`
 
 [`cityflow`](https://github.com/cityflow-project/CityFlow.git) needs a Linux environment, and we run the code on Ubuntu.
 
