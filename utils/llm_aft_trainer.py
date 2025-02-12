@@ -927,14 +927,10 @@ class LLM_Inference_VLLM:
         self.tokenizer.pad_token_id = 0
 
         test_generation_kwargs = {
-            "min_length": -1,
             "top_k": 50,
             "top_p": 1.0,
             "temperature": 0.1,
-            "do_sample": True,
-            "max_new_tokens": self.dic_agent_conf["NEW_MAX_TOKENS"],
-            "pad_token_id": self.tokenizer.pad_token_id,
-            "eos_token_id": self.tokenizer.eos_token_id
+            "max_tokens": 2048 + self.dic_agent_conf["NEW_MAX_TOKENS"]
         }
         self.generation_kwargs = vllm.SamplingParams(**test_generation_kwargs)
 
