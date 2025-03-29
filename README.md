@@ -23,7 +23,7 @@
 | **[6 Code structure](#code-structure)** 
 | **[7 Datasets](#datasets)**
 | **[8 Citation](#citation)**
-| **[Website](https://gungnir2099.github.io/LLMLight-Page/)** |
+| **[Website](https://sqlai2099.github.io/LLMLight-Page/)** |
 
 </p>
 
