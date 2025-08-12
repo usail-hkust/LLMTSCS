@@ -33,16 +33,21 @@
 - [x] 🚀🔥 [2024.11] 🎯🎯📢📢 Exciting News! We are thrilled to announce that our 🌟**LLMLight**🌟 has been accepted by **KDD'2025**! 🎉🎉🎉 Thanks to all the team members 🤗
 - [x] 🚀🔥 [2024.11] 🎯🎯📢📢 Exciting Update! We’re thrilled to announce that our LightGPT family has expanded with **four new members** now available on [HuggingFace](https://huggingface.co/collections/usail-hkust/llmlight-lightgpt-673ac5a619cbbe309165b56d). These models include fine-tuned backbones based on **Qwen2** and **Llama3**. Check them out!
 - [x] 🚀🔥 [2025.04] 🎯🎯📢📢 Delighted to receive the Special Award and Golden Medal of the International Exhibition Inventions of Geneva 2025, congratulations to the LLMLight team! 🤗
-      
+- [x] 🚀🔥 [2025.08] 🎯🎯📢📢 Delighted to receive the Audience Appreciation Award from **KDD'2025**, congratulations to the LLMLight team! 🤗
+
 <table>
   <tr>
-    <td width="37%">
+    <td width="20%">
       <img src="https://github.com/user-attachments/assets/6a7e1819-9c12-4719-95f1-c5f3df663cb7" style="width:100%;"/>
     </td>
-    <td width="63%">
+    <td width="40%">
       <img src="https://github.com/user-attachments/assets/bbb88210-7ab3-4f49-91cb-b731c364027d" style="width:100%;"/>
     </td>
+    <td width="40%">
+      <img src="https://github.com/user-attachments/assets/9b6117d1-0eb6-41e4-b8d0-b369cabb91ee" style="width:100%;"/>
+    </td>
   </tr>
+
 </table>
 
 ## 1 Introduction
